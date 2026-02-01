@@ -1,6 +1,7 @@
 import pytest
 from list_manipulator import exchange
 from list_manipulator import max_min_even_odd
+from list_manipulator import first_last_even_odd
 
 
 @pytest.mark.parametrize("lst, index, expected", [
@@ -41,3 +42,29 @@ def test_max_min_even_odd_valid_cases(lst, mode, category, expected):
 ])
 def test_max_min_even_odd_invalid_cases(lst, mode, category, expected):
     assert max_min_even_odd(lst, mode, category) == expected
+
+
+@pytest.mark.parametrize("lst, command, expected", [
+    ([1, 2, 3, 4, 5, 6], ["first", 0, "even"], []),
+    ([1, 2, 3, 4, 5, 6], ["last", 0, "odd"], []),
+    ([1, 3, 5], ["first", 2, "even"], []),
+    ([2, 4, 6], ["last", 2, "odd"], []),
+    ([1, 2, 3, 4, 5, 6], ["first", 2, "even"], [2, 4]),
+    ([1, 2, 3, 4, 5, 6], ["last", 2, "even"], [4, 6]),
+    ([1, 2, 3, 4, 5, 6], ["first", 2, "odd"], [1, 3]),
+    ([1, 2, 3, 4, 5, 6], ["last", 2, "odd"], [3, 5]),
+    ([1, 2, 3, 4, 5, 6], ["last", 4, "odd"], [1, 3, 5]),
+    ([1, 2, 3, 4, 5, 6], ["first", 4, "even"], [2, 4, 6]),
+])
+def test_first_last_even_odd_valid_cases(lst, command, expected):
+    assert first_last_even_odd(lst, command) == expected
+
+
+@pytest.mark.parametrize("lst, command, expected", [
+    ([1, 2, 3, 4], ["first", 5, "even"], "Invalid count"),
+    ([1, 2, 3, 4], ["last", 5, "even"], "Invalid count"),
+    ([1, 2, 3, 4], ["first", 5, "odd"], "Invalid count"),
+    ([1, 2, 3, 4], ["last", 5,  "odd"], "Invalid count"),
+])
+def test_first_last_even_odd_invalid_cases(lst, command, expected):
+    assert first_last_even_odd(lst, command) == expected
