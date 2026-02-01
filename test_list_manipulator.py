@@ -21,15 +21,23 @@ def test_exchange_index_out_of_range():
     assert exchange([], 0) == "Invalid index"
 
 
-def test_max_min_even_odd_valid_cases():
-    assert max_min_even_odd([1, 2, 3, 4, 5], "max", "even") == 3
-    assert max_min_even_odd([1, 2, 3, 4, 5], "min", "even") == 1
-    assert max_min_even_odd([1, 2, 3, 4, 5], "max", "odd") == 4
-    assert max_min_even_odd([1, 2, 3, 4, 5], "min", "odd") == 0
-    assert max_min_even_odd([1, 2, 3, 4, 4], "max", "even") == 4
-    assert max_min_even_odd([1, 2, 2, 4, 5], "min", "even") == 2
+@pytest.mark.parametrize("lst, mode, category, expected", [
+    ([1, 2, 3, 4, 5], "max", "even", 3),
+    ([1, 2, 3, 4, 5], "min", "even", 1),
+    ([1, 2, 3, 4, 5], "max", "odd", 4),
+    ([1, 2, 3, 4, 5], "min", "odd", 0),
+    ([1, 2, 3, 4, 4], "max", "even", 4),
+    ([1, 2, 2, 4, 5], "min", "even", 2)
+])
+def test_max_min_even_odd_valid_cases(lst, mode, category, expected):
+    assert max_min_even_odd(lst, mode, category) == expected
 
 
-def test_max_min_even_odd_invalid_cases():
-    assert max_min_even_odd([1, 3, 5, 7, 9], "max", "even") == "No matches"
-    assert max_min_even_odd([2, 4, 6, 8, 10], "max", "odd") == "No matches"
+@pytest.mark.parametrize("lst, mode, category, expected", [
+    ([1, 3, 5, 7, 9], "max", "even", "No matches"),
+    ([2, 4, 6, 8, 10], "max", "odd", "No matches"),
+    ([1, 3, 5, 7, 9], "min", "even", "No matches"),
+    ([2, 4, 6, 8, 10], "min", "odd", "No matches"),
+])
+def test_max_min_even_odd_invalid_cases(lst, mode, category, expected):
+    assert max_min_even_odd(lst, mode, category) == expected
