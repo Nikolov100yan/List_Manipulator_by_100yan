@@ -33,7 +33,7 @@ def exchange(lst, index):
 
 
 def max_min_even_odd(lst, mode, command):
-    """"Returns the INDEX of the max/min even/odd element."""
+    """Returns the INDEX of the max/min even/odd element."""
     filtered = [i for i, x in enumerate(lst) if x % 2 == (0 if command == "even" else 1)]
 
     if not filtered:
@@ -65,6 +65,9 @@ def first_last_even_odd(lst, command):
 
     if count > len(lst):
         return "Invalid count"
+
+    if count == 0:
+        return []
 
     filtered = [x for x in lst if x % 2 == (0 if category == "even" else 1)]
 
