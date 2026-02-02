@@ -61,8 +61,6 @@ def only_even_nums(lst):
 
 def first_last_even_odd(lst, command):
     """extracts first/last odd/even numbers from a list"""
-    # If there are not enough elements to satisfy the count, print as many as you can.
-    # If there are zero even/odd elements, print an empty list "[]"
     segment, count, category = command[0], int(command[1]), command[2]
 
     if count > len(lst):
