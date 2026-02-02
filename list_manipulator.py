@@ -49,16 +49,6 @@ def max_min_even_odd(lst, mode, command):
             return i
 
 
-def only_odd_nums(lst):
-    """Checks if the list contains only odd numbers."""
-    return all(int(n) % 2 != 0 for n in lst)
-
-
-def only_even_nums(lst):
-    """Checks if the list contains only even numbers."""
-    return all(int(n) % 2 == 0 for n in lst)
-
-
 def first_last_even_odd(lst, command):
     """Extracts first/last odd/even numbers from a list."""
     segment, count, category = command[0], int(command[1]), command[2]
