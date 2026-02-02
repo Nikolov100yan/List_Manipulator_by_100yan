@@ -26,14 +26,14 @@ def main():
 
 
 def exchange(lst, index):
-    """Splits the list after the given index and exchanges the places of the two resulting sub-lists"""
+    """Splits the list after the given index and exchanges the places of the two resulting sub-lists."""
     if index >= len(lst) or index < 0:
         return "Invalid index"
     return lst[index + 1:] + lst[:index + 1]
 
 
 def max_min_even_odd(lst, mode, command):
-    """"returns the INDEX of the max/min even/odd element"""
+    """"Returns the INDEX of the max/min even/odd element."""
     filtered = [i for i, x in enumerate(lst) if x % 2 == (0 if command == "even" else 1)]
 
     if not filtered:
@@ -50,17 +50,17 @@ def max_min_even_odd(lst, mode, command):
 
 
 def only_odd_nums(lst):
-    """checks if the list contains only odd numbers"""
+    """Checks if the list contains only odd numbers."""
     return all(int(n) % 2 != 0 for n in lst)
 
 
 def only_even_nums(lst):
-    """checks if the list contains only even numbers"""
+    """Checks if the list contains only even numbers."""
     return all(int(n) % 2 == 0 for n in lst)
 
 
 def first_last_even_odd(lst, command):
-    """extracts first/last odd/even numbers from a list"""
+    """Extracts first/last odd/even numbers from a list."""
     segment, count, category = command[0], int(command[1]), command[2]
 
     if count > len(lst):
